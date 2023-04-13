@@ -3,6 +3,7 @@ package helloworld;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.MessageProperties;
 import org.junit.Test;
 import utils.RabbitMQUtils;
 
@@ -46,7 +47,7 @@ public class Provider {
 
         //发布消息
         //参数1：交换机名称  参数2：队列名称  参数3：传递消息额外设置   参数4：消息的具体内容
-        channel.basicPublish("","hello",null,"hello rabbitmq".getBytes());
+        channel.basicPublish("","hello", MessageProperties.PERSISTENT_TEXT_PLAIN,"hello rabbitmq".getBytes());
 
         /*channel.close();
         connection.close();*/
